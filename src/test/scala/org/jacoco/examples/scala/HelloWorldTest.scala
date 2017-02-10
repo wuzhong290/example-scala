@@ -1,4 +1,4 @@
-package org.jacoco.examples.maven.scala
+package org.jacoco.examples.scala
 
 import org.junit._
 import Assert._

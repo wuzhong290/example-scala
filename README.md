@@ -61,3 +61,7 @@ View source and learn more about [Codecov Global Uploader][4]
 [2]: https://twitter.com/codecov
 [3]: mailto:hello@codecov.io
 [4]: https://github.com/codecov/codecov-bash
+
+其实主要的是执行了  
+mvn jacoco:prepare-agent   ,这个命令用于生成jacoco.exec  。 
+然后执行的是 mvn jacoco:report用于生成报表。
