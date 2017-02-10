@@ -4,10 +4,6 @@ package org.jacoco.examples.scala.basic
   * Created by wuzhong on 2017/2/10.
   */
 object demo1 {
-    private lazy val _start: this.type ={
-      this
-    }
-    implicit def age = 30
     private var name = "wuzhong"
     //函数 getter方法
     val name_ = () => name
@@ -24,7 +20,6 @@ object demo1 {
         this.name = name
     }
     def main(args: Array[String]) {
-      println(age)
       println(getName)
       println(name_())
       _name("liuyanjun")
