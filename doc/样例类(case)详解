@@ -1,1 +1,44 @@
 http://www.imooc.com/article/5867
+
+
+概述：case类在模式匹配和actor中经常使用到，当一个类被定义成为case类后，
+Scala会自动帮你创建一个伴生对象并帮你实现了一系列方法且带来了不少好处，如下：
+1.实现了apply方法，意味着你不需要使用new关键字就能创建该类对象
+2.实现了unapply方法，可以通过模式匹配来获取类属性，是Scala中抽取器的实现和模式匹配的关键方法。
+3.实现了类构造参数的getter方法（构造参数默认被声明为val），但是当你构造参数是声明为var类型的，它将帮你实现setter和getter方法(不建议将构造参数声明为var)
+构造参数为val的情况（默认）：
+4.还默认帮你实现了toString,equals，copy和hashCode等方法
+case object Start
+C:\Users\yoho>javap E:\scalaprojects\example-scala\target\classes\org\jacoco\examples\scala\akka\Start.class
+Compiled from "LocalActor.scala"
+public final class org.jacoco.examples.scala.akka.Start {
+  public static java.lang.String toString();
+  public static int hashCode();
+  public static boolean canEqual(java.lang.Object);
+  public static scala.collection.Iterator<java.lang.Object> productIterator();
+  public static java.lang.Object productElement(int);
+  public static int productArity();
+  public static java.lang.String productPrefix();
+}
+
+
+case class Message(msg: String)
+C:\Users\yoho>javap E:\scalaprojects\example-scala\target\classes\org\jacoco\examples\scala\akka\Message.class
+Compiled from "RemoteActor.scala"
+public class org.jacoco.examples.scala.akka.Message implements scala.Product,scala.Serializable {
+  public static <A> scala.Function1<java.lang.String, A> andThen(scala.Function1<org.jacoco.examples.scala.akka.Message, A>);
+  public static <A> scala.Function1<A, org.jacoco.examples.scala.akka.Message> compose(scala.Function1<A, java.lang.String>);
+  public java.lang.String msg();
+  public org.jacoco.examples.scala.akka.Message copy(java.lang.String);
+  public java.lang.String copy$default$1();
+  public java.lang.String productPrefix();
+  public int productArity();
+  public java.lang.Object productElement(int);
+  public scala.collection.Iterator<java.lang.Object> productIterator();
+  public boolean canEqual(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public boolean equals(java.lang.Object);
+  public org.jacoco.examples.scala.akka.Message(java.lang.String);
+}
+
