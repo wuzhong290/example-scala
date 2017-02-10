@@ -4,6 +4,9 @@ package org.jacoco.examples.scala.basic
   * Created by wuzhong on 2017/2/10.
   */
 object demo1 {
+    private lazy val _start: this.type ={
+      this
+    }
     private var name = "wuzhong"
     //函数 getter方法
     val name_ = () => name
