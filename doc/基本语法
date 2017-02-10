@@ -1,6 +1,11 @@
-一、惰性变量
+1、惰性变量
 Scala中使用关键字lazy来定义惰性变量，实现延迟加载(懒加载)。
 惰性变量只能是不可变变量，并且只有在调用惰性变量时，才会去实例化这个变量。
     private lazy val _start: this.type ={
       this
     }
+2、implicit关键字
+implicit 可分为：
+隐式参数
+隐式转换类型
+隐式调用函数
