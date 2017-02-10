@@ -10,3 +10,16 @@ implicit 可分为：
 隐式转换类型
 隐式调用函数
 E:\scalaprojects\example-scala\src\main\scala\org\jacoco\examples\scala\basic\implicitDemo.scala
+
+3、import机制总结
+    1、导入package
+    2、导入package下所有成员：import java.util._
+    3、导入package下特定成员：import java.util.ArrayList
+    4、导入package下特定成员，并重命名：import java.util.{ArrayList => JList, HashMap => JMap}
+    5、导入package object的成员：import test.utils._
+    6、导入object的成员：import scala.Option._
+    7、import 可以位于表达式的能放的任意位置，而且导入的成员有其“可见”的作用域
+    8、scala默认已导入的名字空间及成员： scala包下成员默认可见，相当与每个编译单元里默认import scala._
+
+
+
