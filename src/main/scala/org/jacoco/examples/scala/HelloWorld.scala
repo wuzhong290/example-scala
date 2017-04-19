@@ -1,7 +1,7 @@
 package org.jacoco.examples.scala
 
 object HelloWorld {
-  
+
 	def message(bigger : Boolean) = {
 		if (bigger) {
 			println("Hello Universe!")
