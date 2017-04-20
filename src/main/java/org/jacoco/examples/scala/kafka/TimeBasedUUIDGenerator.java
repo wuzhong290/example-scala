@@ -80,4 +80,44 @@ public class TimeBasedUUIDGenerator {
         }
         return macAddressAsLong;
     }
+/*
+0000000000000000000000010101101110001010010111101010000111100100    currentTimeMillis
+1000101001011110101000011110010000000000000000000000000000000000    currentTimeMillis << 32 (为currentTimeMillis最后32位)
+
+0000000000000000111111111111111100000000000000000000000000000000    0xFFFF00000000L
+
+0000000000000000000000010101101100000000000000000000000000000000    currentTimeMillis & 0xFFFF00000000L
+
+
+0000000000000000000000000000000000000001010110110000000000000000    (currentTimeMillis & 0xFFFF00000000L) >> 16
+
+
+1000101001011110101000011110010000000001010110110000000000000000    time |= ((currentTimeMillis & 0xFFFF00000000L) >> 16);//time = currentTimeMillis << 32
+
+
+0000000000000000000000000000000000000000000000000000000000000000    currentTimeMillis >> 48
+
+0000000000000000000000000000000000000000000000000000000000000000    (currentTimeMillis >> 48) & 0x0FFF
+
+
+0000000000000000000000000000000000000000000000000001000000000000    0x1000 | ((currentTimeMillis >> 48) & 0x0FFF);
+
+1000101001011110101000011110010000000001010110110001000000000000    time |= 0x1000 | ((currentTimeMillis >> 48) & 0x0FFF);
+* */
+    public static void main(String[] args) {
+        System.out.println(1L << 32);
+        System.out.println(1492675109348L << 32);
+        System.out.println(System.currentTimeMillis());
+        System.out.println(TimeBasedUUIDGenerator.hostIdentifier);
+        UUID u = TimeBasedUUIDGenerator.generateId();// UUID.fromString("0a1cf270-259a-11e7-9598-0800200c9a66");// UUID.randomUUID();
+
+        System.out.println(u.toString());
+        System.out.println(u.clockSequence());
+        System.out.println(u.timestamp());
+        System.out.println(u.variant());
+        System.out.println(u.version());
+        System.out.println(u.node());
+        System.out.println(u.getLeastSignificantBits());
+        System.out.println(u.getMostSignificantBits());
+    }
 }
